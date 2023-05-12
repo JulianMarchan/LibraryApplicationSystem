@@ -43,7 +43,6 @@ namespace LibraryApplicationSystem.Web.Controllers
 
                 };
                 return View(model);
-
             }
             else
             {
@@ -52,5 +51,5 @@ namespace LibraryApplicationSystem.Web.Controllers
             }
 
         }
-        }
+    }
 }

@@ -11,6 +11,7 @@ namespace LibraryApplicationSystem.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<Department> Departments { get; set; }  
+        public DbSet<Student>  Students { get; set; }
         public LibraryApplicationSystemDbContext(DbContextOptions<LibraryApplicationSystemDbContext> options)
             : base(options)
         {

@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace LibraryApplicationSystem.Entities
 {
-    public class Student : FullAuditedEntity
+    public class Student : FullAuditedEntity<int>
     {
-        public string Name { get; set; }
-        public string StudentContact { get; set; }
+        public string StudentName { get; set; }
+        public int StudentContactNumber { get; set; }
         public string StudentEmail { get; set; }
+
         public int DepartmentId { get; set; }
-        public Department DepartmentFk { get; set; }
+        public Department Department { get; set; }
 
     }
 }

@@ -11,5 +11,6 @@ namespace LibraryApplicationSystem.Departments
 {
     public interface IDepartmentAppService : IAsyncCrudAppService<DepartmentDto, int, PagedDepartmentResultRequestDto, CreateDepartmentDto, DepartmentDto>
     {
+        Task<List<DepartmentDto>> GetAllDepartments();
     }
 }

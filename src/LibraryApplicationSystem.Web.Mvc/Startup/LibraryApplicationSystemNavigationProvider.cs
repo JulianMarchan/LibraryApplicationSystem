@@ -13,6 +13,14 @@ namespace LibraryApplicationSystem.Web.Startup
         public override void SetNavigation(INavigationProviderContext context)
         {
             context.Manager.MainMenu
+                 .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.About,
+                        L("Student"),
+                        url: "Students",
+                        icon: "fas fa-info-circle"
+                    )
+                )
                 .AddItem(
                     new MenuItemDefinition(
                         PageNames.About,

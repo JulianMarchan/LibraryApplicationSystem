@@ -17,7 +17,7 @@
 
     $(document).on('click', '.delete-dept', function () {
         var deptId = $(this).attr("data-dept-id");
-        var deptName = $(this).attr('data-dept-name');
+        var deptName = $(this).attr('data-user-name');
 
         deleteDept(deptId, deptName);
     });
@@ -26,7 +26,7 @@
         abp.message.confirm(
             abp.utils.formatString(
                 l('AreYouSureWantToDelete'),
-                deptName),//not yet getting the name
+                deptName),
             null,
             (isConfirmed) => {
                 if (isConfirmed) {

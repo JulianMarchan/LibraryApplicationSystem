@@ -1,7 +1,7 @@
 ﻿(function ($) {
     
     var _$form = $('#CreateDepartmentForm');
-    l = abp.localization.getSource('LibraryApplicationSystem');
+    //l = abp.localization.getSource('LibraryApplicationSystem');
     var _departmentAppService = abp.services.app.department;
     var _indexPage = "/Departments";
 
@@ -32,4 +32,4 @@
 
   
 
-})(jQuery);
+})(jQuery);-

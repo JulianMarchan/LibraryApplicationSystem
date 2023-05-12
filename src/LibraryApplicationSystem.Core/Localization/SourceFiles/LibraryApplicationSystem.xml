@@ -120,6 +120,10 @@
 	  <text name="CreateDepartment">Create Department</text>
 	  <text name="EditDepartment">Edit Department</text>
 	  <text name="Department">Department</text>
+	  <text name="Student">Student</text>
+	  <text name="CreateStudent">Create Student</text>
+
+
 
   </texts>
 </localizationDictionary>

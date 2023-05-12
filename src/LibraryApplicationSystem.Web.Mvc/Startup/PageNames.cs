@@ -8,6 +8,8 @@
         public const string Users = "Users";
         public const string Roles = "Roles";
         public const string Departments = "Departments";
+        public const string Students = "Students";
+
 
     }
 }
