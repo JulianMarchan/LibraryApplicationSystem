@@ -4,16 +4,22 @@ using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LibraryApplicationSystem.Departments.Dto;
 using LibraryApplicationSystem.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 
 namespace LibraryApplicationSystem.Departments
 {
+
     public class DepartmentAppService : AsyncCrudAppService<Department, DepartmentDto, int, PagedDepartmentResultRequestDto, CreateDepartmentDto, DepartmentDto>, IDepartmentAppService
 
     {
         public DepartmentAppService(IRepository<Department, int> repository) : base(repository)
         {
+
         }
+
         public override Task<DepartmentDto> CreateAsync(CreateDepartmentDto input)
         {
             return base.CreateAsync(input);
@@ -38,5 +44,9 @@ namespace LibraryApplicationSystem.Departments
         {
             return base.UpdateAsync(input);
         }
+
+       
+        
+
     }
 }

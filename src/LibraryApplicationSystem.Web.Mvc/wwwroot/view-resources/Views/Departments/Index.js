@@ -1,11 +1,19 @@
 ﻿(function ($) {
+    l = abp.localization.getSource('LibraryApplicationSystem');
+    var _departmentAppService = abp.services.app.department;
 
+
+    
+    // EDIT UPDATE
     $(document).on('click', '.edit-dept', function (e) {
         var deptId = $(this).attr("data-dept-id");
 
         e.preventDefault();
         window.location.href = "/Departments/CreateOrEditDepartment/" + deptId;
     });
+
+
+    //DELETE 
 
     $(document).on('click', '.delete-dept', function () {
         var deptId = $(this).attr("data-dept-id");
@@ -18,20 +26,26 @@
         abp.message.confirm(
             abp.utils.formatString(
                 l('AreYouSureWantToDelete'),
-                userName),
+                deptName),//not yet getting the name
             null,
             (isConfirmed) => {
                 if (isConfirmed) {
-                    //_userService.delete({
-                    //    id: userId
-                    //}).done(() => {
-                    //    abp.notify.info(l('SuccessfullyDeleted'));
-                    //    _$usersTable.ajax.reload();
-                    //});
+                    _departmentAppService.delete({
+                        id: deptId
+                    }).done(() => {
+                        abp.notify.info(l('SuccessfullyDeleted'));
+                        window.location.href = "/Departments";
+                        //_$form.ajax.reload();
+                    });
                 }
             }
         );
     }
+
+    $(document).on('click', '.cancel-button', function (e) {
+        window.location.href = _indexPage;
+    });
+
 })(jQuery);
 
             

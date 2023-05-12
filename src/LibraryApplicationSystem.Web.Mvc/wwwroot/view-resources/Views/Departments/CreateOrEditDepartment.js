@@ -1,5 +1,7 @@
 ﻿(function ($) {
+    
     var _$form = $('#CreateDepartmentForm');
+    l = abp.localization.getSource('LibraryApplicationSystem');
     var _departmentAppService = abp.services.app.department;
     var _indexPage = "/Departments";
 
@@ -23,11 +25,11 @@
                 window.location.href = _indexPage;
             });
         }
-    };
-
-
+    }
     $(document).on('click', '.cancel-button', function (e) {
         window.location.href = _indexPage;
     });
+
+  
 
 })(jQuery);

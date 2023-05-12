@@ -1,4 +1,5 @@
-﻿using Abp.AutoMapper;
+﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 using Abp.Domain.Entities;
 using LibraryApplicationSystem.Entities;
 using System;
@@ -11,7 +12,7 @@ namespace LibraryApplicationSystem.Departments.Dto
 {
     [AutoMapFrom(typeof(DepartmentDto))]
     [AutoMapTo(typeof(Department))]
-    public class CreateDepartmentDto : Entity<int>
+    public class CreateDepartmentDto 
     {
         public string Name { get; set; }
     }

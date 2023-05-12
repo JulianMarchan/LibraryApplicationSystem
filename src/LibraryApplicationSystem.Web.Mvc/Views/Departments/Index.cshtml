@@ -1,9 +1,13 @@
 ﻿@using LibraryApplicationSystem.Web.Models.Departments
+@using LibraryApplicationSystem.Web.Controllers
 @model DepartmentListViewModel
+
 
 @section scripts{
         <environment names="Development">
-            <script src="~/view-resources/Views/Departments/Index.js" asp-append-version="true"></script>
+            
+        <script src="~/view-resources/Views/Departments/Index.js" asp-append-version="true"></script>
+
         </environment>
 }
 <section class="content-header">
@@ -29,7 +33,7 @@
                 <div class="card">
                    
                     <div class="card-header">
-                        <a class="btn bg-blue float-sm-right" asp-controller="Departments" asp-action="CreateOrEditDepartment">
+                        <a class="btn bg-blue float-sm-right" href="/Departments/CreateOrEditDepartment">
                             <i class="fa fa-plus-square"></i>
                             @L("CreateDepartment")
                         </a>

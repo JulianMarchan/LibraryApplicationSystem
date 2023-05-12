@@ -32,14 +32,25 @@ namespace LibraryApplicationSystem.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateOrEditDepartment(int id)
         {
-            var department = await _departmentAppService.GetAsync(new EntityDto<int>(id));
-            var model = new CreateOrEditDepartmentViewModel()
+            if (id > 0)
             {
-                Id = department.Id,
-                Name = department.Name,
-            };
+                var department = await _departmentAppService.GetAsync(new EntityDto<int>(id));
+                var model = new CreateOrEditDepartmentViewModel()
+                {
+                    //Id = department.Id,
+                    Name = department.Name,
+                    Id = id
 
-            return View(model);
+                };
+                return View(model);
+
+            }
+            else
+            {
+                return View();
+
+            }
+
         }
         }
 }
