@@ -1573,6 +1573,48 @@ namespace LibraryApplicationSystem.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("LibraryApplicationSystem.Entities.BookCategories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("BookCategoriess");
+                });
+
             modelBuilder.Entity("LibraryApplicationSystem.Entities.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -1630,7 +1672,7 @@ namespace LibraryApplicationSystem.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DepartmentId")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -1940,11 +1982,24 @@ namespace LibraryApplicationSystem.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
+            modelBuilder.Entity("LibraryApplicationSystem.Entities.BookCategories", b =>
+                {
+                    b.HasOne("LibraryApplicationSystem.Entities.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
             modelBuilder.Entity("LibraryApplicationSystem.Entities.Student", b =>
                 {
                     b.HasOne("LibraryApplicationSystem.Entities.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Department");
                 });

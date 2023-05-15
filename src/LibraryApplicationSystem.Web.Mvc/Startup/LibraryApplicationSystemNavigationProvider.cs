@@ -15,7 +15,15 @@ namespace LibraryApplicationSystem.Web.Startup
             context.Manager.MainMenu
                  .AddItem(
                     new MenuItemDefinition(
-                        PageNames.About,
+                        PageNames.BookCategories,
+                        L("BookCategories"),
+                        url: "BookCategories",
+                        icon: "fas fa-info-circle"
+                    )
+                )
+                 .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Students,
                         L("Student"),
                         url: "Students",
                         icon: "fas fa-info-circle"
@@ -23,7 +31,7 @@ namespace LibraryApplicationSystem.Web.Startup
                 )
                 .AddItem(
                     new MenuItemDefinition(
-                        PageNames.About,
+                        PageNames.Departments,
                         L("Department"),
                         url: "Departments",
                         icon: "fas fa-info-circle"
