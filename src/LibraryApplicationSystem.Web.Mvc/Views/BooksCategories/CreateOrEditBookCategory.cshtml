@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using LibraryApplicationSystem.Web.Models.BookCategories
+@using LibraryApplicationSystem.Web.Startup
+@model CreateOrEditBookCategoryViewModel
+
+@section scripts{
+    <environment names="Development">
+        <script src="~/view-resources/Views/BookCategories/CreateOrEditBookCategory.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<form name="CreateBookCategoryForm" id="CreateBookCategoryForm" role="form" class="form-horizontal">
+
+    <div class="modal-body" style="">
+        <label style="font-size:24px" class="col-md-3 col-form-label">Create Book Category</label>
+        <input type="hidden" name="Id" value="@Model?.Id" data-bookCat-name />
+
+        <div class="form-group row required">
+            <div class="col-12">
+                <div style="display:flex; justify-content:center;align-items:center;" class="row">
+
+                    <div class="col-md-6 form-group">
+
+                        <div class="form-group row required">
+                        <label class="col-md-4 col-form-label" for="Name">Name</label>
+                            <input id="Name" type="text" name="Name" value="@Model?.Name" placeholder="Name" class="form-control" data-bookcat-Name required>
+                      </div>  
+
+                        <div class="form-group row required">
+                        <label class="col-md-3 col-form-label" for="Name">Department</label>
+                            @Html.DropDownListFor(m => m.DepartmentId, Model.Departments.Select(d => new SelectListItem {Text = d.Name, Value = d.Id.ToString()}),"Select Department", new {@class = "form-control"})
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display:flex; justify-content:center;align-items:center;" class="row">
+                    <button id="Submit" type="submit" name="Submit" class="btn bg-blue float-sm-right save-button"> Submit </button>
+                    <button id="Cancel" type="button" name="Cancel" class="btn btn-sm bg-secondary cancel-button">Cancel</button>
+                </div>
+            </div>
+           
+
+        </div>
+    </div>
+</form>
