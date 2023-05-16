@@ -7,6 +7,7 @@ using LibraryApplicationSystem.Books.Dto;
 using LibraryApplicationSystem.BookCategory.Dto;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace LibraryApplicationSystem.Books
 {
@@ -47,13 +48,14 @@ namespace LibraryApplicationSystem.Books
         public async Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedResultRequestDto input)
         {
             var book = await _repository.GetAll()
-                .Include(x => x.BookCategoryId)
+                .Include(x => x.BookCategories)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
 
             return new PagedResultDto<BookDto>(book.Count(), book);
         }
+
 
     }
 }

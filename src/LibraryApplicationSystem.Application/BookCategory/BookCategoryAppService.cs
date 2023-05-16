@@ -2,6 +2,7 @@
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LibraryApplicationSystem.BookCategory.Dto;
+using LibraryApplicationSystem.Books.Dto;
 using LibraryApplicationSystem.Entities;
 using LibraryApplicationSystem.Students.Dto;
 using Microsoft.EntityFrameworkCore;
@@ -55,7 +56,14 @@ namespace LibraryApplicationSystem.BookCategory
 
             return new PagedResultDto<BookCategoryDto>(bookCategory.Count(), bookCategory);
         }
+        public async Task<List<BookCategoryDto>> GetAllBookCategory()
+        {
+            var book = await _repository.GetAll()
+                .Select(x => ObjectMapper.Map<BookCategoryDto>(x))
+                .ToListAsync();
 
-       
+
+            return book;
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace LibraryApplicationSystem.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var books = await _bookAppService.GetAllAsync(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
+            var books = await _bookAppService.GetAllBookWithCategory(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
             var model = new BookListViewModel()
             {
                 Books = books.Items.ToList(),
@@ -37,7 +37,7 @@ namespace LibraryApplicationSystem.Web.Controllers
         public async Task<IActionResult> CreateOrEditBook(int id)
         {
             var model = new CreateOrEditBookViewModel();
-            var bookCategories = await _bookCategoryAppService.GetAllBookCategory();
+            var bookCategories = await _bookCategoryAppService.GetAllBookCategory(); //Getallbook nasa interface
 
             if (id != 0)
             {

@@ -25,9 +25,6 @@ namespace LibraryApplicationSystem.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var students = await _studentAppService.GetAllStudentWithDepartment(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue });
-
-
-
             var model = new StudentListViewModel()
             {
                 Students = students.Items.ToList(),
@@ -40,7 +37,7 @@ namespace LibraryApplicationSystem.Web.Controllers
         public async Task<IActionResult> CreateOrEditStudent(int id)
         {
             var model = new CreateOrEditStudentViewModel();
-            var departments = await _departmentAppService.GetAllDepartments(); //end point 
+            var departments = await _departmentAppService.GetAllDepartments(); //end point interface
 
             if (id != 0)
             {

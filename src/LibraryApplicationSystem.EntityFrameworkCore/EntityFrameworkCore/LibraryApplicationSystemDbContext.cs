@@ -15,6 +15,7 @@ namespace LibraryApplicationSystem.EntityFrameworkCore
         public DbSet<BookCategories> BookCategoriess { get; set; }
 
         public DbSet<Book> Books { get; set; }
+
         public LibraryApplicationSystemDbContext(DbContextOptions<LibraryApplicationSystemDbContext> options)
             : base(options)
         {

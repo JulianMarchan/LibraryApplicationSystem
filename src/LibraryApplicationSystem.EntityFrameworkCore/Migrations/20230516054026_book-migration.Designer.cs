@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryApplicationSystem.Migrations
 {
     [DbContext(typeof(LibraryApplicationSystemDbContext))]
-    [Migration("20230515060352_Book-migration")]
-    partial class Bookmigration
+    [Migration("20230516054026_book-migration")]
+    partial class bookmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1587,6 +1587,9 @@ namespace LibraryApplicationSystem.Migrations
                     b.Property<string>("BookAuthor")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("BookCategoriesId")
+                        .HasColumnType("int");
+
                     b.Property<int>("BookCategoryId")
                         .HasColumnType("int");
 
@@ -1621,6 +1624,8 @@ namespace LibraryApplicationSystem.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookCategoriesId");
 
                     b.ToTable("Books");
                 });
@@ -2032,6 +2037,15 @@ namespace LibraryApplicationSystem.Migrations
                     b.Navigation("DeleterUser");
 
                     b.Navigation("LastModifierUser");
+                });
+
+            modelBuilder.Entity("LibraryApplicationSystem.Entities.Book", b =>
+                {
+                    b.HasOne("LibraryApplicationSystem.Entities.BookCategories", "BookCategories")
+                        .WithMany()
+                        .HasForeignKey("BookCategoriesId");
+
+                    b.Navigation("BookCategories");
                 });
 
             modelBuilder.Entity("LibraryApplicationSystem.Entities.BookCategories", b =>

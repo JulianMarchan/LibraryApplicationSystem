@@ -1573,6 +1573,60 @@ namespace LibraryApplicationSystem.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("LibraryApplicationSystem.Entities.Book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BookAuthor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("BookCategoriesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BookPublisher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("isBorrowed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookCategoriesId");
+
+                    b.ToTable("Books");
+                });
+
             modelBuilder.Entity("LibraryApplicationSystem.Entities.BookCategories", b =>
                 {
                     b.Property<int>("Id")
@@ -1980,6 +2034,15 @@ namespace LibraryApplicationSystem.Migrations
                     b.Navigation("DeleterUser");
 
                     b.Navigation("LastModifierUser");
+                });
+
+            modelBuilder.Entity("LibraryApplicationSystem.Entities.Book", b =>
+                {
+                    b.HasOne("LibraryApplicationSystem.Entities.BookCategories", "BookCategories")
+                        .WithMany()
+                        .HasForeignKey("BookCategoriesId");
+
+                    b.Navigation("BookCategories");
                 });
 
             modelBuilder.Entity("LibraryApplicationSystem.Entities.BookCategories", b =>

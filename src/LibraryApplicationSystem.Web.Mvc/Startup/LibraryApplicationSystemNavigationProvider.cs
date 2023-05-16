@@ -24,9 +24,9 @@ namespace LibraryApplicationSystem.Web.Startup
                  .AddItem(
                     new MenuItemDefinition(
                         PageNames.BooksCategories,
-                        L("Books Categories"),
+                        L("BooksCategories"),
                         url: "BooksCategories",
-                        icon: "fas fa-info-circle"
+                        icon: "fas fa-circle"
                     )
                 )
                  .AddItem(
@@ -34,7 +34,7 @@ namespace LibraryApplicationSystem.Web.Startup
                         PageNames.Students,
                         L("Student"),
                         url: "Students",
-                        icon: "fas fa-info-circle"
+                        icon: "fas fa-users"
                     )
                 )
                 .AddItem(
@@ -42,7 +42,7 @@ namespace LibraryApplicationSystem.Web.Startup
                         PageNames.Departments,
                         L("Department"),
                         url: "Departments",
-                        icon: "fas fa-info-circle"
+                        icon: "fas  fa-building"
                     )
                 )
                 .AddItem(

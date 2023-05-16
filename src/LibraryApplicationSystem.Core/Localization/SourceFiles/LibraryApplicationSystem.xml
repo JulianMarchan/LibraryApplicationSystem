@@ -126,7 +126,7 @@
 	  <text name="CreateStudent">Create Student</text>
 	  <text name="EditStudent">Edit Student</text>
 
-	  <text name="BookCategories">BookCategories</text>
+	  <text name="BookCategories">Book Categories</text>
 	  <text name="CreateOrEditBookCategory">Create BookCategory</text>
 
 	  <text name="Books">Books</text>

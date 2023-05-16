@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LibraryApplicationSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class Bookmigration : Migration
+    public partial class bookmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +22,7 @@ namespace LibraryApplicationSystem.Migrations
                     BookAuthor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     isBorrowed = table.Column<bool>(type: "bit", nullable: false),
                     BookCategoryId = table.Column<int>(type: "int", nullable: false),
+                    BookCategoriesId = table.Column<int>(type: "int", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -33,7 +34,17 @@ namespace LibraryApplicationSystem.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Books_BookCategoriess_BookCategoriesId",
+                        column: x => x.BookCategoriesId,
+                        principalTable: "BookCategoriess",
+                        principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_BookCategoriesId",
+                table: "Books",
+                column: "BookCategoriesId");
         }
 
         /// <inheritdoc />

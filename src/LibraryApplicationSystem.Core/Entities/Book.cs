@@ -8,6 +8,7 @@ namespace LibraryApplicationSystem.Entities
         public string BookAuthor { get; set; }
         public bool isBorrowed { get; set; }
         public int BookCategoryId { get; set; }
+        public BookCategories BookCategories { get; set; }
 
     }
 }
