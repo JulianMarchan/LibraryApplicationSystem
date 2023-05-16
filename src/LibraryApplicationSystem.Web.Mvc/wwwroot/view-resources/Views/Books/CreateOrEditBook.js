@@ -1,14 +1,15 @@
 ﻿(function ($) {
-
     var _$form = $('#CreateBookForm');
     var _bookCategoriesAppService = abp.services.app.Books;
     var _indexPage = "/Books";
 
+    //CLICK ON SUBMIT
     _$form.submit(function (e) {
         e.preventDefault();
         save();
     });
 
+    //CREATE N EDIT
     function save() {
         if (!_$form.valid()) {
             return;
@@ -25,6 +26,7 @@
             });
         }
     }
+    //CANCEL
     $(document).on('click', '.cancel-button', function (e) {
         window.location.href = _indexPage;
     });

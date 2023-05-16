@@ -2,7 +2,7 @@
     l = abp.localization.getSource('LibraryApplicationSystem');
     var _bookAppService = abp.services.app.Books; //APP SERVICE
 
-    // EDIT UPDATE
+    //EDIT 
     $(document).on('click', '.edit-dept', function (e) {
         var deptId = $(this).attr("data-dept-id");
 
@@ -10,6 +10,8 @@
         window.location.href = "/BooksCategories/CreateOrEditBook/" + deptId;
     });
 
+
+    //DELETE
     $(document).on('click', '.delete-dept', function () {
         var deptId = $(this).attr("data-dept-id");
         var deptName = $(this).attr('data-user-name');
