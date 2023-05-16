@@ -13,6 +13,8 @@ namespace LibraryApplicationSystem.EntityFrameworkCore
         public DbSet<Department> Departments { get; set; }  
         public DbSet<Student>  Students { get; set; }
         public DbSet<BookCategories> BookCategoriess { get; set; }
+
+        public DbSet<Book> Books { get; set; }
         public LibraryApplicationSystemDbContext(DbContextOptions<LibraryApplicationSystemDbContext> options)
             : base(options)
         {

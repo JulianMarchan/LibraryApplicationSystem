@@ -7,7 +7,7 @@
         var deptId = $(this).attr("data-dept-id");
 
         e.preventDefault();
-        window.location.href = "/BookCategories/CreateOrEditBookCategory/" + deptId;
+        window.location.href = "/BooksCategories/CreateOrEditBookCategory/" + deptId;
     });
 
     $(document).on('click', '.delete-dept', function () {
@@ -29,7 +29,7 @@
                         id: deptId
                     }).done(() => {
                         abp.notify.info(l('SuccessfullyDeleted'));
-                        window.location.href = "/BookCategories";
+                        window.location.href = "/BooksCategories";
                         //_$form.ajax.reload();
                     });
                 }

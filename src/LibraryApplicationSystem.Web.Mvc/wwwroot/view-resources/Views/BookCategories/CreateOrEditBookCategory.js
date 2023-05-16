@@ -2,7 +2,7 @@
 
     var _$form = $('#CreateBookCategoryForm');
     var _bookCategoriesAppService = abp.services.app.bookCategory;
-    var _indexPage = "/BookCategories";
+    var _indexPage = "/BooksCategories";
 
     _$form.submit(function (e) {
         e.preventDefault();

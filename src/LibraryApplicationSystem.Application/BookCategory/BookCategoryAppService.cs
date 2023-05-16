@@ -5,6 +5,7 @@ using LibraryApplicationSystem.BookCategory.Dto;
 using LibraryApplicationSystem.Entities;
 using LibraryApplicationSystem.Students.Dto;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -54,5 +55,7 @@ namespace LibraryApplicationSystem.BookCategory
 
             return new PagedResultDto<BookCategoryDto>(bookCategory.Count(), bookCategory);
         }
+
+       
     }
 }
