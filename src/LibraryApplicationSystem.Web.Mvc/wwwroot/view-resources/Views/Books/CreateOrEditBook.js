@@ -1,6 +1,6 @@
 ﻿(function ($) {
     var _$form = $('#CreateBookForm');
-    var _bookCategoriesAppService = abp.services.app.Books;
+    var _bookAppService = abp.services.app.book;
     var _indexPage = "/Books";
 
     //CLICK ON SUBMIT
@@ -17,11 +17,11 @@
         var book = _$form.serializeFormToObject();
 
         if (book.Id != 0) {
-            _bookCategoriesAppService.update(book).done(function () {
+            _bookAppService.update(book).done(function () {
                 window.location.href = _indexPage;
             });
         } else {
-            _bookCategoriesAppService.create(book).done(function () {
+            _bookAppService.create(book).done(function () {
                 window.location.href = _indexPage;
             });
         }

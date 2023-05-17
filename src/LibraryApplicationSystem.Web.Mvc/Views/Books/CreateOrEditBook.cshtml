@@ -3,7 +3,8 @@
 *@
 @{
 }
-@using LibraryApplicationSystem.Web.Models.Book
+@using LibraryApplicationSystem.Web.Models.Books
+@using LibraryApplicationSystem.Web.Models.Books
 @using LibraryApplicationSystem.Web.Startup
 @model CreateOrEditBookViewModel
 
@@ -46,7 +47,7 @@
                         </div>
                         <div class="form-group row required">
                             <label class="col-md-3 col-form-label" for="Name">Is Borrowed</label>
-                            <input style="margin-left:1px;" id="isBorrowed" type="checkbox" name="isBorrowed" value="@Model?.isBorrowed" data-dept-isBorrowed>
+                            <input id="isBorrowed" type="checkbox" name="isBorrowed" value="@Model?.isBorrowed" data-dept-isBorrowed>
                         </div>
                     </div>
                 </div>

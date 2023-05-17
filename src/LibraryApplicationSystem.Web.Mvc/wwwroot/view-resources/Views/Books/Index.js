@@ -7,7 +7,7 @@
         var deptId = $(this).attr("data-dept-id");
 
         e.preventDefault();
-        window.location.href = "/BooksCategories/CreateOrEditBook/" + deptId;
+        window.location.href = "/Books/CreateOrEditBook/" + deptId;
     });
 
 

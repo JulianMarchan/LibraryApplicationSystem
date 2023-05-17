@@ -2,7 +2,6 @@
 using LibraryApplicationSystem.BookCategory;
 using LibraryApplicationSystem.Books;
 using LibraryApplicationSystem.Controllers;
-using LibraryApplicationSystem.Web.Models.Book;
 using LibraryApplicationSystem.Web.Models.Books;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;

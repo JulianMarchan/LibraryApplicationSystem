@@ -4,11 +4,13 @@
     var _bookCategoriesAppService = abp.services.app.bookCategory;
     var _indexPage = "/BooksCategories";
 
+    //CLICK ON SUBMIT
     _$form.submit(function (e) {
         e.preventDefault();
         save();
     });
 
+    //CREATE N EDIT
     function save() {
         if (!_$form.valid()) {
             return;
@@ -25,6 +27,7 @@
             });
         }
     }
+    //CANCEL
     $(document).on('click', '.cancel-button', function (e) {
         window.location.href = _indexPage;
     });

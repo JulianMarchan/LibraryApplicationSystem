@@ -1,7 +1,7 @@
 ﻿using LibraryApplicationSystem.BookCategory.Dto;
 using System.Collections.Generic;
 
-namespace LibraryApplicationSystem.Web.Models.Book
+namespace LibraryApplicationSystem.Web.Models.Books
 {
     public class CreateOrEditBookViewModel
     {
