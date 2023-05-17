@@ -14,12 +14,12 @@ namespace LibraryApplicationSystem.Web.Controllers
     {
 
         private IBookAppService _bookAppService;
-        private IBookCategoryAppService _bookCategoryAppService;
+        private IBookCategoryAppService _bookCategoriesAppService;
 
         public BooksController(IBookAppService bookAppService, IBookCategoryAppService bookCategoryAppService) 
         {
             _bookAppService = bookAppService;
-            _bookCategoryAppService = bookCategoryAppService;
+            _bookCategoriesAppService = bookCategoryAppService;
         }
 
 
@@ -37,7 +37,7 @@ namespace LibraryApplicationSystem.Web.Controllers
         public async Task<IActionResult> CreateOrEditBook(int id)
         {
             var model = new CreateOrEditBookViewModel();
-            var bookCategories = await _bookCategoryAppService.GetAllBookCategory(); //Getallbook nasa interface
+            var bookCategories = await _bookCategoriesAppService.GetAllBookCategory(); //Getallbook nasa interface
 
             if (id != 0)
             {

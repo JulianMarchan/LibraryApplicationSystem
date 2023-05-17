@@ -1,6 +1,6 @@
 ﻿(function ($) {
     l = abp.localization.getSource('LibraryApplicationSystem');
-    var _bookCatagoryAppService = abp.services.app.bookCategory; //APP SERVICE
+    var _bookCategoryAppService = abp.services.app.bookCategory; //APP SERVICE
 
     // EDIT UPDATE
     $(document).on('click', '.edit-dept', function (e) {
@@ -25,7 +25,7 @@
             null,
             (isConfirmed) => {
                 if (isConfirmed) {
-                    _bookCatagoryAppService.delete({
+                    _bookCategoryAppService.delete({
                         id: deptId
                     }).done(() => {
                         abp.notify.info(l('SuccessfullyDeleted'));

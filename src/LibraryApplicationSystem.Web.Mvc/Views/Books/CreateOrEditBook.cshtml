@@ -39,16 +39,14 @@
                         <label class="col-md-3 col-form-label" for="Name">Book Author</label>
                             <input id="BookAuthor" type="text" name="BookAuthor" value="@Model?.BookAuthor" placeholder="Book Author" class="form-control" data-dept-BookAuthor required>
                         </div>
-
-                        <div class="form-group row required">
-                            <label class="col-md-3 col-form-label" for="Name"></label>
-                            <input id="isBorrowed" type="radio" name="isBorrowed" value="@Model?.isBorrowed" class="form-control" data-dept-isBorrowed>
-                        </div>
-
-
+                    
                         <div class="form-group row required">
                         <label class="col-md-3 col-form-label" for="Name">Book Category</label>
                             @Html.DropDownListFor(m => m.BookCategoryId, Model.BookCategories.Select(d => new SelectListItem {Text = d.Name, Value = d.Id.ToString()}),"Select Book Category", new {@class = "form-control"})
+                        </div>
+                        <div class="form-group row required">
+                            <label class="col-md-3 col-form-label" for="Name">Is Borrowed</label>
+                            <input style="margin-left:1px;" id="isBorrowed" type="checkbox" name="isBorrowed" value="@Model?.isBorrowed" data-dept-isBorrowed>
                         </div>
                     </div>
                 </div>

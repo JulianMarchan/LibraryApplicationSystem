@@ -15,7 +15,7 @@ namespace LibraryApplicationSystem.Books.Dto
         public bool isBorrowed { get; set; }
 
         public int BookCategoryId { get; set; }
-        public BookCategoryDto BookCategory { get; set; }
+        public BookCategoryDto BookCategories { get; set; }
 
     }
 }
