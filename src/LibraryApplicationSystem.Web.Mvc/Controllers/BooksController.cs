@@ -48,7 +48,7 @@ namespace LibraryApplicationSystem.Web.Controllers
                     BookPublisher = books.BookPublisher,
                     BookAuthor = books.BookAuthor,
                     isBorrowed = books.isBorrowed,
-                    BookCategoryId = books.BookCategoryId,
+                    BookCategoriesId = books.BookCategoriesId,
                 };
             }
             model.BookCategories = bookCategories;

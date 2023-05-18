@@ -1584,10 +1584,7 @@ namespace LibraryApplicationSystem.Migrations
                     b.Property<string>("BookAuthor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("BookCategoriesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookCategoryId")
+                    b.Property<int>("BookCategoriesId")
                         .HasColumnType("int");
 
                     b.Property<string>("BookPublisher")
@@ -2040,7 +2037,9 @@ namespace LibraryApplicationSystem.Migrations
                 {
                     b.HasOne("LibraryApplicationSystem.Entities.BookCategories", "BookCategories")
                         .WithMany()
-                        .HasForeignKey("BookCategoriesId");
+                        .HasForeignKey("BookCategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("BookCategories");
                 });
