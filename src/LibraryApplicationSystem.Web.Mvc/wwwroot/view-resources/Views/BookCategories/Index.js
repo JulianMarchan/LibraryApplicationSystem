@@ -3,30 +3,30 @@
     var _bookCategoryAppService = abp.services.app.bookCategory; //APP SERVICE
 
     // EDIT UPDATE
-    $(document).on('click', '.edit-dept', function (e) {
-        var deptId = $(this).attr("data-dept-id");
+    $(document).on('click', '.edit-bookcat', function (e) {
+        var bookcat = $(this).attr("data-bookcat-id");
 
         e.preventDefault();
-        window.location.href = "/BooksCategories/CreateOrEditBookCategory/" + deptId;
+        window.location.href = "/BooksCategories/CreateOrEditBookCategory/" + bookcat;
     });
 
-    $(document).on('click', '.delete-dept', function () {
-        var deptId = $(this).attr("data-dept-id");
-        var deptName = $(this).attr('data-user-name');
+    $(document).on('click', '.delete-bookcat', function () {
+        var bookcat = $(this).attr("data-bookcat-id");
+        var bookcatName = $(this).attr('data-user-name');
 
-        deleteDept(deptId, deptName);
+        deletebookcat(bookcat, bookcatName);
     });
 
-    function deleteDept(deptId, deptName) {
+    function deletebookcat(bookcat, bookcatName) {
         abp.message.confirm(
             abp.utils.formatString(
                 l('AreYouSureWantToDelete'),
-                deptName),
+                bookcatName),
             null,
             (isConfirmed) => {
                 if (isConfirmed) {
                     _bookCategoryAppService.delete({
-                        id: deptId
+                        id: bookcat
                     }).done(() => {
                         abp.notify.info(l('SuccessfullyDeleted'));
                         window.location.href = "/BooksCategories";

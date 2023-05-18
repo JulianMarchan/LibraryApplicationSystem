@@ -5,6 +5,8 @@ using LibraryApplicationSystem.Entities;
 
 namespace LibraryApplicationSystem.Books.Dto
 {
+
+    //To get the properties from our Entity
     [AutoMapFrom(typeof(Book))]
     [AutoMapTo(typeof(Book))]
     public class BookDto : EntityDto<int>

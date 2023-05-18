@@ -6,30 +6,30 @@
        window.location.href = _indexPage;
    });
 
-    $(document).on('click', '.edit-dept', function (e) {
-        var deptId = $(this).attr("data-dept-id");
+    $(document).on('click', '.edit-stud', function (e) {
+        var studId = $(this).attr("data-stud-id");
 
         e.preventDefault();
-        window.location.href = "/Students/CreateOrEditStudent/" + deptId;
+        window.location.href = "/Students/CreateOrEditStudent/" + studId;
     });
 
-    $(document).on('click', '.delete-dept', function () {
-        var deptId = $(this).attr("data-dept-id");
-        var deptName = $(this).attr('data-user-name');
+    $(document).on('click', '.delete-stud', function () {
+        var studId = $(this).attr("data-stud-id");
+        var studName = $(this).attr('data-user-name');
 
-        deleteDept(deptId, deptName);
+        deletestud(studId, studName);
     });
 
-    function deleteDept(deptId, deptName) {
+    function deletestud(studId, studName) {
         abp.message.confirm(
             abp.utils.formatString(
                 l('AreYouSureWantToDelete'),
-                deptName),
+                studName),
             null,
             (isConfirmed) => {
                 if (isConfirmed) {
                     _studentAppService.delete({
-                        id: deptId
+                        id: studId
                     }).done(() => {
                         abp.notify.info(l('SuccessfullyDeleted'));
                         window.location.href = "/Students";
