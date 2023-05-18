@@ -1,6 +1,6 @@
 ﻿(function ($) {
     l = abp.localization.getSource('LibraryApplicationSystem');
-    var _bookAppService = abp.services.app.Books; //APP SERVICE
+    var _bookAppService = abp.services.app.book; //APP SERVICE
 
     //EDIT 
     $(document).on('click', '.edit-dept', function (e) {
