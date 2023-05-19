@@ -15,6 +15,14 @@ namespace LibraryApplicationSystem.Web.Startup
             context.Manager.MainMenu
                 .AddItem(
                     new MenuItemDefinition(
+                        PageNames.Borrowers,
+                        L("Borrowers"),
+                        url: "Borrowers",
+                        icon: "fas fa-users"
+                    )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
                         PageNames.Books,
                         L("Books"),
                         url: "Books",

@@ -130,7 +130,9 @@
 	  <text name="CreateOrEditBookCategory">Create BookCategory</text>
 
 	  <text name="Books">Books</text>
+	  <text name="CreateOrEditBook">Create Book</text>
 
+	  <text name="Borrowers">Borrowers</text>
 
 
 

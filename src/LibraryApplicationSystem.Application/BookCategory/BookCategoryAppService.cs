@@ -2,9 +2,7 @@
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LibraryApplicationSystem.BookCategory.Dto;
-using LibraryApplicationSystem.Books.Dto;
 using LibraryApplicationSystem.Entities;
-using LibraryApplicationSystem.Students.Dto;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;

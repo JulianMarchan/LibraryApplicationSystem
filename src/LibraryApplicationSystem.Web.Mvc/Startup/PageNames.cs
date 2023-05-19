@@ -11,6 +11,7 @@
         public const string Students = "Students";
         public const string BooksCategories = "Books Categories";
         public const string Books = "Books";
+        public const string Borrowers = "Borrowers";
 
 
 

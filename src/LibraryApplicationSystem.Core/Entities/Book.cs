@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using System.Linq;
 namespace LibraryApplicationSystem.Entities
 {
     public class Book : FullAuditedEntity <int>
