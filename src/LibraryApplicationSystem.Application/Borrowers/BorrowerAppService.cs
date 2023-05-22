@@ -48,6 +48,7 @@ namespace LibraryApplicationSystem.Borrowers
         {
             var borrowers = await _repository.GetAll()
                 .Include(x => x.Book)
+                .Include(x => x.Student)
                 .Select(x => ObjectMapper.Map<BorrowerDto>(x))
                 .ToListAsync();
 

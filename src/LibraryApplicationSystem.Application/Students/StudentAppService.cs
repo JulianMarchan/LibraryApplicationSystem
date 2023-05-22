@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq.Dynamic.Core;
 using System.Linq;
 using System.Threading.Tasks;
+using LibraryApplicationSystem.Books.Dto;
 
 namespace LibraryApplicationSystem.Students
 {
@@ -55,6 +56,16 @@ namespace LibraryApplicationSystem.Students
 
 
             return new PagedResultDto<StudentDto>(students.Count(), students);
+        }
+
+        public async Task<List<StudentDto>> GetAllBorrowersStudent()
+        {
+            var student = await _repository.GetAll()
+                .Select(x => ObjectMapper.Map<StudentDto>(x))
+                .ToListAsync();
+
+            return student;
+
         }
     }
 }

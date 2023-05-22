@@ -1,7 +1,11 @@
-﻿using LibraryApplicationSystem.Books;
+﻿using Abp.Application.Services.Dto;
+using LibraryApplicationSystem.Books;
 using LibraryApplicationSystem.Borrowers;
+using LibraryApplicationSystem.Borrowers.Dto;
 using LibraryApplicationSystem.Controllers;
+using LibraryApplicationSystem.Entities;
 using LibraryApplicationSystem.Students;
+using LibraryApplicationSystem.Web.Models.Books;
 using LibraryApplicationSystem.Web.Models.Borrowers;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -24,13 +28,36 @@ namespace LibraryApplicationSystem.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var borrowers = await _borrowerAppService.GetAllAsync(new PagedBorrowerResultRequestDto { MaxResultCount = int.MaxValue });
+            var borrowers = await _borrowerAppService.GetAllBorrowerWithStudentBook(new PagedBorrowerResultRequestDto { MaxResultCount = int.MaxValue });
             var model = new BorrowerListViewModel()
             {
                 Borrowers = borrowers.Items.ToList(),
             };
             return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> CreateOrEditBorrowers(int id)
+        {
+            var model = new CreateOrEditBorrowerViewModel();
+            var book = await _bookAppService.GetAllBorrowersbook(); //Getallbook nasa interface
+            var student = await _studentAppService.GetAllBorrowersStudent();
 
+            if (id != 0)
+            {
+                var borrowers = await _borrowerAppService.GetAsync(new EntityDto<int>(id));
+                model = new CreateOrEditBorrowerViewModel()
+                {
+                    Id = borrowers.Id,
+                    BorrowerDate = borrowers.BorrowerDate,
+                    ExpectedReturnDate = borrowers.ExpectedReturnDate,
+                    ReturnDate = borrowers.ReturnDate,
+                    BookId = borrowers.BookId,
+                    StudentId = borrowers.StudentId,
+                };
+            }
+            model.Book = book;
+            model.Student = student;
+            return View(model);
         }
     }
 }

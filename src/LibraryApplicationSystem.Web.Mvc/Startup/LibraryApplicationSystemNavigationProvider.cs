@@ -32,7 +32,7 @@ namespace LibraryApplicationSystem.Web.Startup
                  .AddItem(
                     new MenuItemDefinition(
                         PageNames.BooksCategories,
-                        L("BooksCategories"),
+                        L("Books Categories"),
                         url: "BooksCategories",
                         icon: "fas fa-circle"
                     )

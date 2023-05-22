@@ -1,8 +1,8 @@
-﻿using LibraryApplicationSystem.Entities;
-
+﻿using LibraryApplicationSystem.Books.Dto;
+using LibraryApplicationSystem.Entities;
+using LibraryApplicationSystem.Students.Dto;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace LibraryApplicationSystem.Web.Models.Borrowers
 {
@@ -15,8 +15,8 @@ namespace LibraryApplicationSystem.Web.Models.Borrowers
 
         public int BookId { get; set; }
         public int StudentId { get; set; }
-        public List<Book> Book { get; set; }
-        public List<Student> Student { get; set; }
+        public List<BookDto> Book { get; set; }
+        public List<StudentDto> Student { get; set; }
 
     }
 }

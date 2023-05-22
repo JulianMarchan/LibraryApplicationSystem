@@ -7,8 +7,9 @@
         var borr = $(this).attr("data-borr-id");
 
         e.preventDefault();
-        window.location.href = "/borr/CreateOrEditBorrower/" + borr;
+        window.location.href = "/Borrowers/CreateOrEditBorrowers/" + borr;
     });
+
 
 
     //DELETE
