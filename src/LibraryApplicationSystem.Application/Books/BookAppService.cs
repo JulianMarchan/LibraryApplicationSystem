@@ -57,7 +57,7 @@ namespace LibraryApplicationSystem.Books
         public async Task<List<BookDto>> GetAllBorrowersbook()
         {
             var borrowers = await _repository.GetAll()
-                .Where(m => m.isBorrowed == false)
+                //.Where(m => m.isBorrowed == false)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 

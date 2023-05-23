@@ -36,7 +36,20 @@ namespace LibraryApplicationSystem.Web.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult> CreateOrEditBorrowers(int id)
+        public async Task<IActionResult> CreateOrEditBorrowers()
+        {
+            var model = new CreateOrEditBorrowerViewModel();
+            var book = await _bookAppService.GetAllBorrowersbook(); //Getallbook nasa interface
+            var student = await _studentAppService.GetAllBorrowersStudent();
+
+            model.Book = book;
+            model.Student = student;
+            return View(model);
+        }
+
+       
+
+        public async Task<IActionResult> EditBorrowers(int id)
         {
             var model = new CreateOrEditBorrowerViewModel();
             var book = await _bookAppService.GetAllBorrowersbook(); //Getallbook nasa interface

@@ -49,7 +49,7 @@ namespace LibraryApplicationSystem.Borrowers
             var borrowers = await _repository.GetAll()
                 .Include(x => x.Book)
                 .Include(x => x.Student)
-                .Where(x => x.Book.isBorrowed == true)
+                .Where(x => x.Book.isBorrowed == false) // sa is borrow lalabas dapat lahat ng borrowers and binorrow 
                 .Select(x => ObjectMapper.Map<BorrowerDto>(x))
                 .ToListAsync();
 

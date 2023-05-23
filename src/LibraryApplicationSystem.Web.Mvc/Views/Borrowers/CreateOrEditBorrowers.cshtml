@@ -35,11 +35,11 @@
                             <input id="ExpectedReturnDate" type="date" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate" placeholder="Expected Return" class="form-control" data-dept-ExpectedReturnDate required>
                         </div>
 
-                        <div class="form-group row required">
+                     @*   <div class="form-group row required">
                             <label class="col-md-3 col-form-label" for="Name">Returned Date</label>
                             <input id="ReturnDate" type="date" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Returned Date" class="form-control" data-dept-ReturnDate required>
                         </div>
-
+*@
                         <div class="form-group row required">
                             <label class="col-md-3 col-form-label" for="Name">Select Book</label>
                             @Html.DropDownListFor(m => m.BookId, Model.Book.Select(d => new SelectListItem {Text = d.BookTitle, Value = d.Id.ToString()}),"Select Book", new {@class = "form-control"})
