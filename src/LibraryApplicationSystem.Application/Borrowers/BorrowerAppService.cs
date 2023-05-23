@@ -55,7 +55,6 @@ namespace LibraryApplicationSystem.Borrowers
 
 
             return new PagedResultDto<BorrowerDto>(borrowers.Count(), borrowers);
-            
         }
     }
 }

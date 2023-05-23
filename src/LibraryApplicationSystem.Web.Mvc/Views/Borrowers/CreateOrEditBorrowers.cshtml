@@ -27,12 +27,12 @@
 
                         <div class="form-group row required">
                             <label class="col-md-3 col-form-label" for="Name">Borrowed Date</label>
-                            <input id="BorrowerDate" type="date" name="BorrowerDate" value="@Model?.BorrowerDate" placeholder="Borrowed Date" class="form-control" data-dept-BorrowerDate required>
+                            <input id="BorrowerDate" type="datetime-local" name="BorrowerDate" value="@Model?.BorrowerDate" placeholder="Borrowed Date" class="form-control" data-dept-BorrowerDate required>
                         </div>
 
                         <div class="form-group row required">
                             <label class="col-md-4 col-form-label" for="Name">Expected Return Date</label>
-                            <input id="ExpectedReturnDate" type="date" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate" placeholder="Expected Return" class="form-control" data-dept-ExpectedReturnDate required>
+                            <input id="ExpectedReturnDate" type="datetime-local" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate" placeholder="Expected Return" class="form-control" data-dept-ExpectedReturnDate required>
                         </div>
 
                      @*   <div class="form-group row required">
