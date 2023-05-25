@@ -7,6 +7,7 @@ using LibraryApplicationSystem.Books.Dto;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
+using LibraryApplicationSystem.Authors.Dto;
 
 namespace LibraryApplicationSystem.Books
 {
@@ -42,6 +43,7 @@ namespace LibraryApplicationSystem.Books
 
         public override Task<BookDto> UpdateAsync(BookDto input)
         {
+
             return base.UpdateAsync(input);
         }
         public async Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedResultRequestDto input)
@@ -51,13 +53,12 @@ namespace LibraryApplicationSystem.Books
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
-
             return new PagedResultDto<BookDto>(book.Count(), book);
         }
         public async Task<List<BookDto>> GetAllBorrowersbook()
         {
             var borrowers = await _repository.GetAll()
-                //.Where(m => m.isBorrowed == false)
+                .Where(m => m.isBorrowed == false)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
@@ -65,5 +66,7 @@ namespace LibraryApplicationSystem.Books
 
         }
 
+
+      
     }
 }

@@ -36,8 +36,8 @@
                       </div>  
 
                         <div class="form-group row required">
-                        <label class="col-md-3 col-form-label" for="Name">Book Author</label>
-                            <input id="BookAuthor" type="text" name="BookAuthor" value="@Model?.BookAuthor" placeholder="Book Author" class="form-control" data-dept-BookAuthor required>
+                            <label class="col-md-3 col-form-label" for="Name">Book Author</label>
+                            @Html.DropDownListFor(m => m.AuthorId, Model.BookCategories.Select(d => new SelectListItem {Text = d.Name, Value = d.Id.ToString()}),"Select Book Author", new {@class = "form-control"})
                         </div>
                     
                         <div class="form-group row required">
@@ -45,7 +45,7 @@
                             @Html.DropDownListFor(m => m.BookCategoriesId, Model.BookCategories.Select(d => new SelectListItem {Text = d.Name, Value = d.Id.ToString()}),"Select Book Category", new {@class = "form-control"})
                         </div>
 
-                       @* <div class="form-group row required">
+                       @*<div class="form-group row required">
                             <label class="col-md-3 col-form-label" for="Name">Is Borrowed</label>
                             <input id="isBorrowed" type="checkbox" name="isBorrowed" value="@Model?.isBorrowed" data-dept-isBorrowed>
                         </div>*@

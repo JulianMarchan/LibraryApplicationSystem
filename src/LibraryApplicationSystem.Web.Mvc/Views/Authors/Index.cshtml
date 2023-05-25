@@ -1,0 +1,59 @@
+﻿@using LibraryApplicationSystem.Web.Models.Books
+@using LibraryApplicationSystem.Web.Controllers
+@model BookListViewModel
+
+
+@section scripts{
+        <environment names="Development">
+            
+        <script src="~/view-resources/Views/Author/Index.js" asp-append-version="true"></script>
+
+        </environment>
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>@("Author")</h1>
+            </div>
+            <div class="col-sm-6">
+           
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+                   
+                    <div class="card-header">
+                        <a class="btn bg-blue float-sm-right" href="/Authors/CreateOrEditAuthor">
+                            <i class="fa fa-plus-square"></i>
+                            @("Create Author")
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="AuthorsTable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Author</th>
+                                        <th style="width: 150px">@L("Actions")</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+                                     

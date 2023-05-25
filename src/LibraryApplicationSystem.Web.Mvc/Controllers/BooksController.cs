@@ -46,7 +46,7 @@ namespace LibraryApplicationSystem.Web.Controllers
                     Id = books.Id,
                     BookTitle = books.BookTitle,
                     BookPublisher = books.BookPublisher,
-                    BookAuthor = books.BookAuthor,
+                    AuthorId = books.AuthorId,
                     isBorrowed = books.isBorrowed,
                     BookCategoriesId = books.BookCategoriesId,
                 };

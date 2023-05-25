@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using LibraryApplicationSystem.Authors.Dto;
 using LibraryApplicationSystem.BookCategory.Dto;
 using LibraryApplicationSystem.Books.Dto;
 using LibraryApplicationSystem.Departments.Dto;
@@ -14,6 +15,6 @@ namespace LibraryApplicationSystem.Books
 
         Task<List<BookDto>> GetAllBorrowersbook();
 
-
+        //Task<List<BookDto>> GetAllAuthorsInBook();
     }
 }
