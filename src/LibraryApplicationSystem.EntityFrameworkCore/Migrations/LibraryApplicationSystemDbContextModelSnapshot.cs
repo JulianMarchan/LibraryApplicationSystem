@@ -1656,6 +1656,8 @@ namespace LibraryApplicationSystem.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AuthorId");
+
                     b.HasIndex("BookCategoriesId");
 
                     b.ToTable("Books");
@@ -1825,8 +1827,8 @@ namespace LibraryApplicationSystem.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("StudentContactNumber")
-                        .HasColumnType("int");
+                    b.Property<long>("StudentContactNumber")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("StudentEmail")
                         .HasColumnType("nvarchar(max)");
@@ -2125,11 +2127,19 @@ namespace LibraryApplicationSystem.Migrations
 
             modelBuilder.Entity("LibraryApplicationSystem.Entities.Book", b =>
                 {
+                    b.HasOne("LibraryApplicationSystem.Entities.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("LibraryApplicationSystem.Entities.BookCategories", "BookCategories")
                         .WithMany()
                         .HasForeignKey("BookCategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
 
                     b.Navigation("BookCategories");
                 });

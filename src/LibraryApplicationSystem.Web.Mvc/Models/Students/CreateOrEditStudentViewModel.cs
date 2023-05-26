@@ -9,7 +9,7 @@ namespace LibraryApplicationSystem.Web.Models.Students
     {
         public int Id { get; set; }
         public string StudentName { get; set; }
-        public int StudentContactNumber { get; set; }
+        public long StudentContactNumber { get; set; }
         public string StudentEmail { get; set; }
         public int DepartmentId { get; set; }
 

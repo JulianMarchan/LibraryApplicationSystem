@@ -11,6 +11,7 @@ namespace LibraryApplicationSystem.Entities
         public int AuthorId { get; set; }
         public int BookCategoriesId { get; set; }
         public BookCategories BookCategories { get; set; }
+        public Author Author { get; set; }
 
     }
 }

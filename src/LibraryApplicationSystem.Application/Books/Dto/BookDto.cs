@@ -18,6 +18,7 @@ namespace LibraryApplicationSystem.Books.Dto
         public int AuthorId { get; set; }
         public int BookCategoriesId { get; set; }
         public BookCategoryDto BookCategories { get; set; }
+        public Author Author { get; set; }
 
     }
 }

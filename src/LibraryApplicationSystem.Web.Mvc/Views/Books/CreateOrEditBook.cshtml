@@ -37,7 +37,7 @@
 
                         <div class="form-group row required">
                             <label class="col-md-3 col-form-label" for="Name">Book Author</label>
-                            @Html.DropDownListFor(m => m.AuthorId, Model.BookCategories.Select(d => new SelectListItem {Text = d.Name, Value = d.Id.ToString()}),"Select Book Author", new {@class = "form-control"})
+                            @Html.DropDownListFor(m => m.AuthorId, Model.Author.Select(d => new SelectListItem {Text = d.Name, Value = d.Id.ToString()}),"Select Book Author", new {@class = "form-control"})
                         </div>
                     
                         <div class="form-group row required">

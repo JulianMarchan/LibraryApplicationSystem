@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LibraryApplicationSystem.Authors.Dto;
 using LibraryApplicationSystem.Borrowers.Dto;
+using LibraryApplicationSystem.Departments.Dto;
 using LibraryApplicationSystem.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,12 +16,12 @@ namespace LibraryApplicationSystem.Authors
 {
     public class AuthorAppService : AsyncCrudAppService<Author, AuthorDto, int, PagedAuthorResultRequestDto, CreateAuthorDto, AuthorDto>, IAuthorAppService
     {
-        private readonly IRepository<Borrower, int> _repository;
+        private readonly IRepository<Author, int> _repository;
 
 
         public AuthorAppService(IRepository<Author, int> repository) : base(repository)
         {
-            
+            _repository = repository;
         }
 
         public override Task<AuthorDto> CreateAsync(CreateAuthorDto input)
@@ -47,6 +48,14 @@ namespace LibraryApplicationSystem.Authors
         {
             return base.UpdateAsync(input);
         }
-    
+
+        public async Task<List<AuthorDto>> GetAllAuthors()
+        {
+            var query = await _repository.GetAll()
+                .Select(x => ObjectMapper.Map<AuthorDto>(x))
+                .ToListAsync();
+
+            return query;
+        }
     }
 }

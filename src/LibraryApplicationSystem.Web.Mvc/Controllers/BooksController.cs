@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
+using LibraryApplicationSystem.Authors;
 using LibraryApplicationSystem.BookCategory;
 using LibraryApplicationSystem.Books;
 using LibraryApplicationSystem.Controllers;
@@ -14,11 +15,13 @@ namespace LibraryApplicationSystem.Web.Controllers
 
         private IBookAppService _bookAppService;
         private IBookCategoryAppService _bookCategoriesAppService;
+        private IAuthorAppService _authorAppService;
 
-        public BooksController(IBookAppService bookAppService, IBookCategoryAppService bookCategoryAppService) 
+        public BooksController(IBookAppService bookAppService, IBookCategoryAppService bookCategoryAppService, IAuthorAppService authorAppService) 
         {
             _bookAppService = bookAppService;
             _bookCategoriesAppService = bookCategoryAppService;
+            _authorAppService = authorAppService;
         }
 
 
@@ -37,6 +40,7 @@ namespace LibraryApplicationSystem.Web.Controllers
         {
             var model = new CreateOrEditBookViewModel();
             var bookCategories = await _bookCategoriesAppService.GetAllBookCategory(); //Getallbook nasa interface
+            var author = await _authorAppService.GetAllAuthors();
 
             if (id != 0)
             {
@@ -51,6 +55,7 @@ namespace LibraryApplicationSystem.Web.Controllers
                     BookCategoriesId = books.BookCategoriesId,
                 };
             }
+            model.Author = author;
             model.BookCategories = bookCategories;
             return View(model);
         }

@@ -7,7 +7,7 @@ namespace LibraryApplicationSystem.Students.Dto
     public class CreateStudentDto
     {
         public string StudentName { get; set; }
-        public int StudentContactNumber { get; set; }
+        public long StudentContactNumber { get; set; }
         public string StudentEmail { get; set; }
         public int DepartmentId { get; set; }
     }

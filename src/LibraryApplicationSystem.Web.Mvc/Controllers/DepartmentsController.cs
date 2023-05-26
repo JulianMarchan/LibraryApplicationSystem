@@ -37,7 +37,6 @@ namespace LibraryApplicationSystem.Web.Controllers
                 var department = await _departmentAppService.GetAsync(new EntityDto<int>(id));
                 var model = new CreateOrEditDepartmentViewModel()
                 {
-                    //Id = department.Id,
                     Name = department.Name,
                     Id = id
 
