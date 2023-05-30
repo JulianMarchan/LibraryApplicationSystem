@@ -14,7 +14,9 @@ namespace LibraryApplicationSystem.Books
         Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedResultRequestDto input);
 
         Task<List<BookDto>> GetAllBorrowersbook();
+        Task<BookDto> UpdateIsBorrowed(EntityDto<int> input);
 
-        //Task<List<BookDto>> GetAllAuthorsInBook();
+
+
     }
 }

@@ -11,5 +11,6 @@ namespace LibraryApplicationSystem.Borrowers
     {
         Task<PagedResultDto<BorrowerDto>> GetAllBorrowerWithStudentBook(PagedResultRequestDto input);
 
+
     }
 }

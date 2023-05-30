@@ -65,9 +65,23 @@ namespace LibraryApplicationSystem.Books
 
             return borrowers;
 
+        } 
+
+        public async Task<BookDto> UpdateIsBorrowed(EntityDto<int> input)
+        {
+            var book = await GetAsync(input);
+             
+               if(book.isBorrowed == true)
+            {
+                book.isBorrowed = false;
+            }
+            else
+            {
+                book.isBorrowed = true;
+            }
+            var updateBook = await UpdateAsync(book);
+
+            return updateBook;
         }
-
-
-      
     }
 }
