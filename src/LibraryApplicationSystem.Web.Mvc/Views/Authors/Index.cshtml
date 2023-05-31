@@ -26,7 +26,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-
                 <div class="card">
                    
                     <div class="card-header">
@@ -34,6 +33,25 @@
                             <i class="fa fa-plus-square"></i>
                             @("Create Author")
                         </a>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <form asp-controller="Authors" asp-action="Index" method="get">
+                                        <div class="input-group">
+
+                                            <input type="text" name="searchString" class="form-control txt-search" />
+                                            <div class="input-group-prepend">
+                                                <button type="submit" name="searchString" class="btn bg-blue btn-search">
+                                                    <span class="fas fa-search" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -41,6 +59,7 @@
                                 <thead>
                                     <tr>
                                        
+                                        <th>ID</th>
                                         <th>ID</th>
                                         <th>Author</th>
                                         <th style="width: 150px">@L("Actions")</th>

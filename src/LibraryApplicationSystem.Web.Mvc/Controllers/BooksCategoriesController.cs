@@ -21,13 +21,22 @@ namespace LibraryApplicationSystem.Web.Controllers
             _departmentAppService = departmentAppService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var bookcategories = await _bookCategoriesAppService.GetAllBookCategoryWithDepartment(new PagedBookCategoryResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new BookCategoryViewModel()
-            {
-               BookCategories = bookcategories.Items.ToList(),
-            };
+            var model = new BookCategoryViewModel();
+
+
+            if (searchString != null)
+                model = new BookCategoryViewModel()
+                {
+                    BookCategories = bookcategories.Items.Where(s => s.Name!.Contains(searchString)).ToList(),
+                };
+            else
+                model = new BookCategoryViewModel()
+                {
+                    BookCategories = bookcategories.Items.ToList(),
+                };
             return View(model);
         }
 

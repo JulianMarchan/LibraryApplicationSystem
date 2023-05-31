@@ -39,7 +39,7 @@ namespace LibraryApplicationSystem.Web.Controllers
         public async Task<IActionResult> CreateOrEditBorrowers()
         {
             var model = new CreateOrEditBorrowerViewModel();
-            var book = await _bookAppService.GetAllBorrowersbook(); //Getallbook nasa interface
+            var book = await _bookAppService.GetAllBorrowersbook(); 
             var student = await _studentAppService.GetAllBorrowersStudent();
 
             model.Book = book;
@@ -52,10 +52,10 @@ namespace LibraryApplicationSystem.Web.Controllers
         public async Task<IActionResult> EditBorrowers(int id)
         {
             var model = new CreateOrEditBorrowerViewModel();
-            var book = await _bookAppService.GetAllBorrowersbook(); //Getallbook nasa interface
+            var book = await _bookAppService.GetAllBorrowersbook(); 
             var student = await _studentAppService.GetAllBorrowersStudent();
 
-            if (id != 0)
+            if (id != 0 )
             {
                 var borrowers = await _borrowerAppService.GetAsync(new EntityDto<int>(id));
                 model = new CreateOrEditBorrowerViewModel()

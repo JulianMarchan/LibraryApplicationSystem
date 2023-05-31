@@ -38,6 +38,17 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
+                                <form asp-controller="BooksCategories" asp-action="Index" method="get">
+                                    <div class="input-group">
+
+                                        <input type="text" name="searchString" class="form-control txt-search" />
+                                        <div class="input-group-prepend">
+                                            <button type="submit" name="searchString" class="btn bg-blue btn-search">
+                                                <span class="fas fa-search" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             <div class="col-md-6">
                             </div>

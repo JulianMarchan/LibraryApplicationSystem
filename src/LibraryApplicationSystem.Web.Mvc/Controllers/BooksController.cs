@@ -2,9 +2,13 @@
 using LibraryApplicationSystem.Authors;
 using LibraryApplicationSystem.BookCategory;
 using LibraryApplicationSystem.Books;
+using LibraryApplicationSystem.Books.Dto;
 using LibraryApplicationSystem.Controllers;
+using LibraryApplicationSystem.Entities;
 using LibraryApplicationSystem.Web.Models.Books;
+using LibraryApplicationSystem.Web.Models.Departments;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,6 +21,8 @@ namespace LibraryApplicationSystem.Web.Controllers
         private IBookCategoryAppService _bookCategoriesAppService;
         private IAuthorAppService _authorAppService;
 
+        public List<BookDto> Books { get; private set; }
+
         public BooksController(IBookAppService bookAppService, IBookCategoryAppService bookCategoryAppService, IAuthorAppService authorAppService) 
         {
             _bookAppService = bookAppService;
@@ -25,13 +31,23 @@ namespace LibraryApplicationSystem.Web.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var books = await _bookAppService.GetAllBookWithCategory(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new BookListViewModel()
+            var model = new BookListViewModel();
+
+            if (searchString != null)
             {
-                Books = books.Items.ToList(),
-            };
+                model = new BookListViewModel()
+                {
+                    Books = books.Items.Where(s => s.BookTitle!.Contains(searchString)).ToList(),
+                };
+            }
+            else
+                model = new BookListViewModel()
+                {
+                    Books = books.Items.ToList(),
+                };
             return View(model);
         }
 
@@ -53,6 +69,7 @@ namespace LibraryApplicationSystem.Web.Controllers
                     AuthorId = books.AuthorId,
                     isBorrowed = books.isBorrowed,
                     BookCategoriesId = books.BookCategoriesId,
+
                 };
             }
             model.Author = author;
