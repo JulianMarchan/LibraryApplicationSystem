@@ -10,6 +10,7 @@ using LibraryApplicationSystem.Web.Models.Borrowers;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace LibraryApplicationSystem.Web.Controllers
 {
@@ -26,14 +27,30 @@ namespace LibraryApplicationSystem.Web.Controllers
             _studentAppService = studentAppService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var borrowers = await _borrowerAppService.GetAllBorrowerWithStudentBook(new PagedBorrowerResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new BorrowerListViewModel()
+            var model = new BorrowerListViewModel();
+
+            if (searchString != null)
             {
-                Borrowers = borrowers.Items.ToList(),
-            };
+                model = new BorrowerListViewModel()
+                {
+                    Borrowers = borrowers.Items.Where(s => s.ReturnDate!.ToString().Contains(searchString)
+                    || s.Book.BookTitle.ToString().Contains(searchString)
+                    || s.Student.StudentName.ToString().Contains(searchString)
+                    || s.ExpectedReturnDate.ToString().Contains(searchString)).ToList(),
+                };
+            }
+            else
+            {
+                model = new BorrowerListViewModel() 
+                {
+                    Borrowers = borrowers.Items.ToList(),
+                };
+            }
             return View(model);
+           
         }
         [HttpGet]
         public async Task<IActionResult> CreateOrEditBorrowers()
@@ -52,12 +69,12 @@ namespace LibraryApplicationSystem.Web.Controllers
         public async Task<IActionResult> EditBorrowers(int id)
         {
             var model = new CreateOrEditBorrowerViewModel();
-            var book = await _bookAppService.GetAllBorrowersbook(); 
+            var book = await _bookAppService.GetAllBorrowersbook();  //books isborrowed = false
             var student = await _studentAppService.GetAllBorrowersStudent();
 
             if (id != 0 )
             {
-                var borrowers = await _borrowerAppService.GetAsync(new EntityDto<int>(id));
+                var borrowers = await _borrowerAppService.GetBorrowerWithBook(id);
                 model = new CreateOrEditBorrowerViewModel()
                 {
                     Id = borrowers.Id,
@@ -67,6 +84,7 @@ namespace LibraryApplicationSystem.Web.Controllers
                     BookId = borrowers.BookId,
                     StudentId = borrowers.StudentId,
                 };
+                book.Add(borrowers.Book);
             }
             model.Book = book;
             model.Student = student;

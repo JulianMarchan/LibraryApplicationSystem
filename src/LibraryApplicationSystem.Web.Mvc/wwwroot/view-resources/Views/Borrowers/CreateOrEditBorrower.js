@@ -30,23 +30,26 @@
         if (borrower.Id != 0)
         {
             if (borrower.ExpectedReturnDate < borrower.ReturnDate) {
-                //changed color to red
-                _bookAppService.updateIsBorrowed({ Id: borrower.BookId, }).done(function () {
-                    window.location.href = _indexPage;
+               // get specific table row change table color
+                _borrowerAppService.update(borrower).done(function () {
+                    _bookAppService.updateIsBorrowed({ Id: borrower.BookId, }).done(function () {
+                        alert("Book not returned on time");
+                        window.location.href = _indexPage;
+                    });
                 });
-
             }
             else if (borrower.ReturnDate < borrower.BorrowerDate) {
-               
                 alert("Cannot return book earlier than book borrowed date");
-                //walang update 
+                //disable
             }
             else
             {
-                _bookAppService.updateIsBorrowed({ Id: borrower.BookId, }).done(function () {
-                    alert("UPDATE");
-                    window.location.href = _indexPage;
-                });
+                _borrowerAppService.update(borrower).done(function () {
+                    _bookAppService.updateIsBorrowed({ Id: borrower.BookId, }).done(function () {
+                        alert("Book returned on time");
+                        window.location.href = _indexPage;
+                    });
+                }); 
             }
         }
         else

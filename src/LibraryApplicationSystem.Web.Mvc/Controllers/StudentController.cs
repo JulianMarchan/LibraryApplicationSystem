@@ -35,7 +35,13 @@ namespace LibraryApplicationSystem.Web.Controllers
             {
                 model = new StudentListViewModel()
                 {
-                    Students = students.Items.Where(s => s.StudentName.Contains(searchString) || s.StudentEmail!.Contains(searchString)).ToList(),
+                    Students = students.Items.Where(s => 
+                       s.StudentName!.ToString().Contains(searchString)
+                    || s.Id!.ToString().Contains(searchString)
+                    || s.StudentContactNumber!.ToString().Contains(searchString)
+                    || s.Department.Name.ToString().Contains(searchString)
+                    || s.StudentEmail!.Contains(searchString))
+                    .ToList(),
                 };
             }
             else

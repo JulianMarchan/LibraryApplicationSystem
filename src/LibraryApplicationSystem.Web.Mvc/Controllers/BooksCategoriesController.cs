@@ -30,7 +30,9 @@ namespace LibraryApplicationSystem.Web.Controllers
             if (searchString != null)
                 model = new BookCategoryViewModel()
                 {
-                    BookCategories = bookcategories.Items.Where(s => s.Name!.Contains(searchString)).ToList(),
+                    BookCategories = bookcategories.Items.Where(s => s.Id!.ToString().Contains(searchString)
+                    || s.Department.Name!.ToString().Contains(searchString)
+                    || s.Name!.Contains(searchString)).ToList(),
                 };
             else
                 model = new BookCategoryViewModel()

@@ -33,20 +33,24 @@ namespace LibraryApplicationSystem.Web.Controllers
 
         public async Task<IActionResult> Index(string searchString)
         {
-            var books = await _bookAppService.GetAllBookWithCategory(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
+            var book = await _bookAppService.GetAllBookWithCategory(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
             var model = new BookListViewModel();
 
             if (searchString != null)
             {
                 model = new BookListViewModel()
                 {
-                    Books = books.Items.Where(s => s.BookTitle!.Contains(searchString)).ToList(),
+                    Books = book.Items.Where(s => s.BookTitle!.Contains(searchString)
+                    || s.Id!.ToString().Contains(searchString)
+                    || s.BookPublisher!.Contains(searchString)
+                    || s.BookCategories!.Name.ToString().Contains(searchString)
+                    || s.Author.Name.ToString().Contains(searchString)).ToList(),
                 };
             }
             else
                 model = new BookListViewModel()
                 {
-                    Books = books.Items.ToList(),
+                    Books = book.Items.ToList(),
                 };
             return View(model);
         }
@@ -60,15 +64,15 @@ namespace LibraryApplicationSystem.Web.Controllers
 
             if (id != 0)
             {
-                var books = await _bookAppService.GetAsync(new EntityDto<int>(id));
+                var book = await _bookAppService.GetAsync(new EntityDto<int>(id));
                 model = new CreateOrEditBookViewModel()
                 {
-                    Id = books.Id,
-                    BookTitle = books.BookTitle,
-                    BookPublisher = books.BookPublisher,
-                    AuthorId = books.AuthorId,
-                    isBorrowed = books.isBorrowed,
-                    BookCategoriesId = books.BookCategoriesId,
+                    Id = book.Id,
+                    BookTitle = book.BookTitle,
+                    BookPublisher = book.BookPublisher,
+                    AuthorId = book.AuthorId,
+                    isBorrowed = book.isBorrowed,
+                    BookCategoriesId = book.BookCategoriesId,
 
                 };
             }

@@ -54,7 +54,6 @@ namespace LibraryApplicationSystem.Students
                 .Select(x => ObjectMapper.Map<StudentDto>(x))
                 .ToListAsync();
 
-
             return new PagedResultDto<StudentDto>(students.Count(), students);
         }
 

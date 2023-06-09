@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@("BookCategory")</h1>
+                <h1>@("Book Categories")</h1>
             </div>
             <div class="col-sm-6">
            
@@ -75,11 +75,11 @@
                                             <td>@bookCategory.Department?.Name</td>
 
                                             <td>
-                                                <button type="button" class="btn btn-sm bg-secondary edit-bookcat" data-bookcat-id="@bookCategory.Id">
+                                                <button style="width:60px; height:30px;" type="button" class="btn btn-sm bg-secondary edit-bookcat" data-bookcat-id="@bookCategory.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-sm bg-danger delete-bookcat" data-bookcat-id="@bookCategory.Id" data-user-name="@bookCategory.Name">
-                                                    <i class="fas fa-trash"></i> Delete
+                                                <button style="width:60px; height:30px;" type="button" class="btn btn-sm bg-danger delete-bookcat" data-bookcat-id="@bookCategory.Id" data-user-name="@bookCategory.Name">
+                                                    <i class="fas fa-trash"></i> 
                                                 </button>
                                             </td>
                                         </tr>

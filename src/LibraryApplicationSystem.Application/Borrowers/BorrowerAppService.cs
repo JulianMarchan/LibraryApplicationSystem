@@ -1,7 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-using LibraryApplicationSystem.BookCategory.Dto;
 using LibraryApplicationSystem.Borrowers.Dto;
 using LibraryApplicationSystem.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +25,8 @@ namespace LibraryApplicationSystem.Borrowers
 
         public override Task DeleteAsync(EntityDto<int> input)
         {
+           
+
             return base.DeleteAsync(input);
         }
 
@@ -49,12 +50,22 @@ namespace LibraryApplicationSystem.Borrowers
             var borrowers = await _repository.GetAll()
                 .Include(x => x.Book)
                 .Include(x => x.Student)
-                .Where(x => x.Book.isBorrowed == true) 
                 .Select(x => ObjectMapper.Map<BorrowerDto>(x))
                 .ToListAsync();
 
 
             return new PagedResultDto<BorrowerDto>(borrowers.Count(), borrowers);
+        }
+        public async Task<BorrowerDto> GetBorrowerWithBook(int id)
+        {
+            var borrower = await _repository.GetAll()
+                .Include(x => x.Book)
+                .Where(x => x.Id == id)
+                .Select(x => ObjectMapper.Map<BorrowerDto>(x))
+                .FirstOrDefaultAsync();
+                
+            return borrower;
+
         }
     }
 }

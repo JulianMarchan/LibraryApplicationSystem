@@ -21,21 +21,21 @@ namespace LibraryApplicationSystem.Web.Controllers
 
         public async Task<IActionResult> Index(string searchString)
         {
-            var departments = await _departmentAppService.GetAllAsync(new PagedDepartmentResultRequestDto { MaxResultCount = int.MaxValue });
+            var department = await _departmentAppService.GetAllAsync(new PagedDepartmentResultRequestDto { MaxResultCount = int.MaxValue });
             var model = new DepartmentListViewModel();
 
             if (searchString != null)
             {
                 model = new DepartmentListViewModel()
                 {
-                    Departments = departments.Items.Where(s => s.Name!.Contains(searchString)).ToList(),
+                    Departments = department.Items.Where(s => s.Id!.ToString().Contains(searchString) ||  s.Name!.Contains(searchString)).ToList(),
                 };
             }
             else
                 model = new DepartmentListViewModel()
 
                 {
-                    Departments = departments.Items.ToList(),
+                    Departments = department.Items.ToList(),
                 };
                return View(model);
         }

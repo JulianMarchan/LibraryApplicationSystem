@@ -15,11 +15,11 @@
     $(document).on('click', '.delete-books', function () {
         var books = $(this).attr("data-books-id");
         var bookName = $(this).attr('data-user-name');
-
-        deletebook(books, bookName);
+        var isborrowed = $(this).attr('data-books-isBorrowed');
+        deletebook(books, bookName, isborrowed);
     });
 
-    function deletebook(books, bookName) {
+    function deletebook(books, bookName, isborrowed) {
         abp.message.confirm(
             abp.utils.formatString(
                 l('AreYouSureWantToDelete'),
@@ -27,13 +27,19 @@
             null,
             (isConfirmed) => {
                 if (isConfirmed) {
-                    _bookAppService.delete({
-                        id: books
-                    }).done(() => {
-                        abp.notify.info(l('SuccessfullyDeleted'));
-                        window.location.href = "/Books";
-                        //_$form.ajax.reload();
-                    });
+                    if (isborrowed == "True") {
+                        abp.notify.info(l('Cannot delete book when not returned'));
+                    }
+                    else {
+                        _bookAppService.delete({
+                            id: books
+                        }).done(() => {
+                            abp.notify.info(l('SuccessfullyDeleted'));
+                            window.location.href = "/Books";
+                            //_$form.ajax.reload();
+                        });
+                    }
+                   
                 }
             }
         );

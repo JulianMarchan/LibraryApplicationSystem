@@ -12,6 +12,8 @@ namespace LibraryApplicationSystem.Borrowers.Dto
     [AutoMapTo(typeof(Borrower))]
     public class BorrowerDto : EntityDto<int>
     {
+        public readonly object BookCategories;
+
         public DateTime BorrowerDate { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
         public DateTime ReturnDate { get; set; }

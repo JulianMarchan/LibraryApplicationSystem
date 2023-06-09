@@ -16,9 +16,9 @@ namespace LibraryApplicationSystem.Web.Startup
                 .AddItem(
                     new MenuItemDefinition(
                         PageNames.Authors,
-                        L("Authors"),
+                        L("Author"),
                         url: "Authors",
-                        icon: "fas fa-users"
+                        icon: "fa fa-user-circle"
                     )
                 ).AddItem(
                     new MenuItemDefinition(
@@ -33,15 +33,15 @@ namespace LibraryApplicationSystem.Web.Startup
                         PageNames.Books,
                         L("Books"),
                         url: "Books",
-                        icon: "fas fa-info-circle"
+                        icon: "fas fa-book"
                     )
                 )
                  .AddItem(
                     new MenuItemDefinition(
                         PageNames.BooksCategories,
-                        L("Books Categories"),
+                        L("BooksCategories"),
                         url: "BooksCategories",
-                        icon: "fas fa-circle"
+                        icon: "fas fa-book"
                     )
                 )
                  .AddItem(
@@ -49,7 +49,7 @@ namespace LibraryApplicationSystem.Web.Startup
                         PageNames.Students,
                         L("Student"),
                         url: "Students",
-                        icon: "fas fa-users"
+                        icon: "fa fa-graduation-cap"
                     )
                 )
                 .AddItem(
@@ -57,7 +57,7 @@ namespace LibraryApplicationSystem.Web.Startup
                         PageNames.Departments,
                         L("Department"),
                         url: "Departments",
-                        icon: "fas  fa-building"
+                        icon: "fa fa-university"
                     )
                 )
                 .AddItem(
@@ -89,7 +89,7 @@ namespace LibraryApplicationSystem.Web.Startup
                         PageNames.Users,
                         L("Users"),
                         url: "Users",
-                        icon: "fas fa-users",
+                        icon: "fa fa-user-circle",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users)
                     )
                 ).AddItem(

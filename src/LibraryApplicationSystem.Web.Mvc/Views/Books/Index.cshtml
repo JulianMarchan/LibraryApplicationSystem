@@ -80,11 +80,11 @@
                                             <td>@book.BookCategories?.Name</td>
 
                                             <td>
-                                                <button type="button" class="btn btn-sm bg-secondary edit-books" data-books-id="@book.Id">
+                                                <button style="width:60px; height:30px;" type="button" class="btn btn-sm bg-secondary edit-books" data-books-id="@book.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-sm bg-danger delete-books" data-books-id="@book.Id" data-user-name="@book.BookTitle">
-                                                    <i class="fas fa-trash"></i> Delete
+                                                <button style="width:60px; height:30px;" type="button" class="btn btn-sm bg-danger delete-books" data-books-isBorrowed="@book.isBorrowed" data-books-id="@book.Id" data-user-name="@book.BookTitle">
+                                                    <i class="fas fa-trash"></i> 
                                                 </button>
                                             </td>
                                         </tr>
